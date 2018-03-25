@@ -29,7 +29,7 @@ val REQUESTCODE = 1
 ```
 3. Call the function in the same activity
 ```kotlin
-permissinaManager {
+permissionManager {
                 activity = this@MainActivity
                 permission = Manifest.permission.CALL_PHONE
                 permissionExplaination = "without this permission you cant call anyone"
@@ -53,7 +53,7 @@ see the full activity code:
 ```kotlin
 package ability.co.mz.nahuexample
 
-import ability.co.mz.nahu.permissinaManager
+import ability.co.mz.nahu.permissionManager
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -70,7 +70,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         openDialer.setOnClickListener {
-            permissinaManager {
+            permissionManager {
                 activity = this@MainActivity
                 permission = Manifest.permission.CALL_PHONE
                 permissionExplaination = "without this permission you cant call anyone"
