@@ -19,8 +19,8 @@ class MainActivity : AppCompatActivity() {
         openDialer.setOnClickListener {
             permissionManager {
                 activity = this@MainActivity
-                permission = Manifest.permission.CALL_PHONE
-                permissionExplaination = "without this permission you cant call anyone"
+                permissions = arrayOf(Manifest.permission.CALL_PHONE)
+                permissionExplanation = "Without this permission you cant call anyone"
                 requestCode = REQUESTCODE
                 then {
                     openDialerApp()
