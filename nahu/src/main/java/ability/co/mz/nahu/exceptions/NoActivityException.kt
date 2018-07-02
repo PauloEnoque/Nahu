@@ -5,9 +5,10 @@ import java.lang.Exception
 /**
  * Created by Paulo Enoque on 3/24/2018.
  */
-class ComponentNotSetException(private val component: String): Exception() {
+class ComponentNotSetException(private val componentName: String): Exception() {
 
     override val message: String?
-        get() = "No $component has been specified, " +
-                "make sure to initialize the $component variable in the permissionManager function"
+        get() = "No $componentName has been specified, " +
+                "be sure to initialize the $componentName variable in the permissionManager" +
+                " function"
 }
