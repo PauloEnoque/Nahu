@@ -4,6 +4,7 @@ import ability.co.mz.nahu.exceptions.ComponentNotSetException
 import android.app.Activity
 import android.content.Context
 import android.content.pm.PackageManager
+import android.os.Build
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
 import android.widget.Toast
@@ -20,7 +21,7 @@ class PermissionHandler {
 
     fun then(block: () -> Unit) {
 
-        if (noNullsFound()) {
+        if (!hasNullProperties()) {
             context = activity?.baseContext
 
             // Here, thisActivity is the current activity
@@ -36,7 +37,7 @@ class PermissionHandler {
                         Toast.makeText(context, permissionExplanation, Toast.LENGTH_LONG).show()
                     }
 
-//                  Request the permission again
+                    // Request the permission again
                     ActivityCompat.requestPermissions(activity!!,
                             permissions!!,
                             requestCode!!)
@@ -60,17 +61,24 @@ class PermissionHandler {
 
     }
 
-    private fun noNullsFound(): Boolean {
-        if (activity == null)    throw ComponentNotSetException(component = "Activity")
+    private fun hasNullProperties(): Boolean {
+        throwExceptionIfNull(activity, "Activity")
+        throwExceptionIfNull(requestCode, "Request Code")
         if (permissions == null || permissions?.size == 0) {
-            throw ComponentNotSetException(component = "Permissions")
+            throw ComponentNotSetException(componentName = "Permissions")
         }
-        if (requestCode == null) throw ComponentNotSetException(component = "Request Code")
+        return false
+    }
 
-        return true
+    private fun throwExceptionIfNull(component: Any?, componentName: String) {
+        if (component == null)
+            throw ComponentNotSetException(componentName)
     }
 
     private fun hasPermissions(): Boolean {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            return true
+        }
         for (permission in permissions!!) {
             if (ContextCompat.checkSelfPermission(context!!, permission)
                     != PackageManager.PERMISSION_GRANTED) {
