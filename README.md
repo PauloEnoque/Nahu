@@ -1,7 +1,8 @@
-Nahu is an Kotlin android library which helps to easily integrate dangerous permission to your app in a DSL style.
+# Nahu
+Nahu is a Kotlin Android library that helps you easily request dangerous permissions in a DSL style.
 
-## Importing library to your project
-Add this in your root build.gradle at the end of repositories:
+## Importing the library to your project
+Add this to your project's build.gradle file:
 ``` gradle
 allprojects{
     repositories {
@@ -10,7 +11,7 @@ allprojects{
     }
 }
 ```
-Step 2. Add the dependency (module gradle file):
+Step 2. Add the dependency to your app's build.gradle file:
 ```gradle
 dependencies {
     compile 'com.github.PauloEnoque:Nahu:beta'
@@ -19,7 +20,7 @@ dependencies {
 **That's it!**
 
 ## How to use in your code
-1. Add the permission to your Manifest
+1. Add the permission to your Manifest:
 ```xml
 <uses-permission android:name="android.permission.CALL_PHONE" />
 ```
@@ -27,7 +28,7 @@ dependencies {
 ```kotlin
 val REQUESTCODE = 1
 ```
-3. Call the function in the same activity
+3. Call the function in the same activity:
 ```kotlin
 permissionManager {
                 activity = this@MainActivity
@@ -40,7 +41,7 @@ permissionManager {
             }
 ```
 
-4. Oviride the onRequestPermissionsResult function
+4. Override the `onRequestPermissionsResult()` function:
 ```kotlin
  override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         when(grantResults[0]){
@@ -48,8 +49,9 @@ permissionManager {
         }
     }
 ```
-and thats it
-see the full activity code:
+And thats it!
+
+See the full activity code below:
 ```kotlin
 package ability.co.mz.nahuexample
 
@@ -95,4 +97,7 @@ class MainActivity : AppCompatActivity() {
     }
 }
 ```
-this library makes your code cleaner and much more readable, its an open-source project and of course it will just get better
+This library makes your code cleaner and much more readable. It's an open-source project and, of course, it will get better with time.
+
+## License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
