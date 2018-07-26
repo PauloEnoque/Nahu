@@ -1,7 +1,7 @@
 package ability.co.mz.nahu
 
 import android.app.Activity
-import android.app.Fragment
+import android.support.v4.app.Fragment
 
 private var handlerRequestCode: Int? = null
 const val DEFAULT_NAHU_REQUEST_CODE = 123
