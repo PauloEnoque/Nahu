@@ -1,14 +1,12 @@
 package ability.co.mz.nahuexample
 
 import ability.co.mz.nahu.handlePermissionsResult
-import ability.co.mz.nahu.permissionManager
+import ability.co.mz.nahu.requestNahuPermissions
 import android.Manifest
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.net.Uri
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -20,8 +18,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         openDialer.setOnClickListener {
-            permissionManager {
-                activity = this@MainActivity
+            requestNahuPermissions {
                 permissions = arrayOf(Manifest.permission.CALL_PHONE)
                 permissionExplanation = "Without this permission you cant call anyone"
                 requestCode = REQUESTCODE
@@ -30,6 +27,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {

@@ -9,6 +9,6 @@ class ComponentNotSetException(private val componentName: String): Exception() {
 
     override val message: String?
         get() = "No $componentName has been specified, " +
-                "be sure to initialize the $componentName variable in the permissionManager" +
+                "be sure to initialize the $componentName variable in the requestNahuPermissions" +
                 " function"
 }

@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">Nahu</string>
+    <string name="app_name" translatable="false">Nahu</string>
+    <string name="default_permission_explanation">Some features have been disabled due to missing permissions</string>
 </resources>
