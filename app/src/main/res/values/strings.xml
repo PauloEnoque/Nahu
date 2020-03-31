@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">NahuExample</string>
     <string name="open_dialer">Open Dialer</string>
+    <string name="title_activity_fragmented">NahuFragment</string>
+    <string name="action_settings">Settings</string>
 </resources>
